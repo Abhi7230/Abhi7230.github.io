@@ -37,24 +37,54 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Abhi Raj",
-  "url": "https://abhi7230.github.io/",
-  "jobTitle": "Filmmaker and Software Engineer",
-  "email": "mailto:abhir0609@gmail.com",
-  "telephone": "+91-85216-98529",
-  "alumniOf": {
-    "@type": "CollegeOrUniversity",
-    "name": "Indian Institute of Technology Bombay"
-  },
-  "worksFor": { "@type": "Organization", "name": "Attentive AI" },
-  "address": { "@type": "PostalAddress", "addressLocality": "Mumbai", "addressCountry": "IN" },
-  "sameAs": [
-    "https://www.linkedin.com/in/abhi-raj-a626a8228/",
-    "https://www.instagram.com/the_slow_creator/",
-    "https://www.instagram.com/abhe_e_e_e_e/",
-    "https://github.com/Abhi7230",
-    "https://www.youtube.com/watch?v=grgffM9v0jU"
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://abhi7230.github.io/#abhi",
+      "name": "Abhi Raj",
+      "url": "https://abhi7230.github.io/",
+      "jobTitle": "Filmmaker and Software Engineer",
+      "email": "mailto:abhir0609@gmail.com",
+      "telephone": "+91-85216-98529",
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Indian Institute of Technology Bombay"
+      },
+      "worksFor": { "@type": "Organization", "name": "Attentive AI" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Mumbai", "addressCountry": "IN" },
+      "sameAs": [
+        "https://www.linkedin.com/in/abhi-raj-a626a8228/",
+        "https://www.instagram.com/the_slow_creator/",
+        "https://www.instagram.com/abhe_e_e_e_e/",
+        "https://github.com/Abhi7230",
+        "https://www.youtube.com/watch?v=grgffM9v0jU"
+      ]
+    },
+    {
+      "@type": "Movie",
+      "name": "Ketchup",
+      "genre": ["Horror", "Comedy"],
+      "datePublished": "2026-05-23",
+      "duration": "PT5M1S",
+      "inLanguage": "en",
+      "url": "https://www.youtube.com/watch?v=grgffM9v0jU",
+      "image": "https://abhi7230.github.io/assets/img/ketchup-poster.jpg",
+      "description": "A horror-comedy short written, shot and cut solo on no budget.",
+      "director": { "@id": "https://abhi7230.github.io/#abhi" },
+      "author": { "@id": "https://abhi7230.github.io/#abhi" },
+      "editor": { "@id": "https://abhi7230.github.io/#abhi" }
+    },
+    {
+      "@type": "Movie",
+      "name": "Ctrl V",
+      "datePublished": "2026",
+      "inLanguage": "en",
+      "url": "https://drive.google.com/file/d/1kriOBLqGtWggZw4FvXrQu2x0gPrDA3r1/view",
+      "image": "https://abhi7230.github.io/assets/img/ctrlv-02.jpg",
+      "description": "A team film made end to end inside the 50-hour window of the IFP 50-Hour Filmmaking Challenge.",
+      "author": { "@id": "https://abhi7230.github.io/#abhi" },
+      "actor": { "@id": "https://abhi7230.github.io/#abhi" }
+    }
   ]
 }
 </script>
@@ -87,7 +117,7 @@
         <span class="line"><span>I build the technology</span></span>
         <span class="line"><span>behind them.</span></span>
       </h1>
-      <p class="hero__sub">Short films, hybrid VFX, and the production software underneath. Mumbai, open to on&#8209;site and hybrid.</p>
+      <p class="hero__sub">Short films, hybrid VFX, and the production software underneath.</p>
       <div class="hero__cta">
         <a class="cta-watch" href="#ketchup">
           <span class="cta-watch__rule" aria-hidden="true"></span>
@@ -102,9 +132,9 @@
 
     <figure class="hero__plate">
       <img src="/assets/img/ketchup-plate.jpg" width="810" height="982"
-           alt="Still from Ketchup, a horror-comedy short directed by Abhi Raj."
+           alt="Poster for Ketchup, a horror-comedy short film written and directed by Abhi Raj."
            fetchpriority="high" decoding="async">
-      <figcaption>Ketchup · horror&#8209;comedy short</figcaption>
+      <figcaption>Ketchup · horror&#8209;comedy short · 2026</figcaption>
     </figure>
   </section>
 
@@ -115,10 +145,15 @@
     <ol class="index" id="index">
 
       <li class="index__row">
-        <div class="index__inner" data-preview="image" data-src="/assets/img/ketchup-poster.jpg">
+        <div class="index__inner" data-preview="image" data-src="/assets/img/ketchup-player.jpg">
           <span class="index__no">01</span>
+          <figure class="index__thumb">
+            <img src="/assets/img/ketchup-01.jpg" width="1000" height="562" loading="lazy" decoding="async"
+                 alt="A masked figure framed between two walls of hard diagonal light, from Ketchup.">
+          </figure>
           <div class="index__body">
             <h3 class="index__title"><a class="stretch" href="https://www.youtube.com/watch?v=grgffM9v0jU" target="_blank" rel="noopener">Ketchup</a></h3>
+            <p class="index__meta">2026 · 5 min · black and white</p>
             <p class="index__desc">Horror&#8209;comedy short. Written, shot and cut solo on no budget, the whole pipeline from script to delivery run singlehanded.</p>
           </div>
           <p class="index__role"><span>Writer</span><span>Director</span><span>Cinematography</span><span>Editor</span></p>
@@ -127,11 +162,16 @@
       </li>
 
       <li class="index__row">
-        <div class="index__inner" data-preview="plate" data-plate="Ctrl V" data-tint="cool">
+        <div class="index__inner" data-preview="image" data-src="/assets/img/ctrlv-01.jpg">
           <span class="index__no">02</span>
+          <figure class="index__thumb">
+            <img src="/assets/img/ctrlv-02.jpg" width="1000" height="562" loading="lazy" decoding="async"
+                 alt="A figure standing alone in a kitchen, from Ctrl V.">
+          </figure>
           <div class="index__body">
             <h3 class="index__title"><a class="stretch" href="https://drive.google.com/file/d/1kriOBLqGtWggZw4FvXrQu2x0gPrDA3r1/view" target="_blank" rel="noopener">Ctrl V</a></h3>
-            <p class="index__desc">IFP 50&#8209;Hour Filmmaking Challenge, 2026. Written, shot and completed inside the 50&#8209;hour window.</p>
+            <p class="index__meta">2026 · 5 min · IFP 50&#8209;Hour Filmmaking Challenge</p>
+            <p class="index__desc">A team film made end to end inside the 50&#8209;hour window of the challenge. I wrote it and acted in it.</p>
           </div>
           <p class="index__role"><span>Writer</span><span>Actor</span></p>
           <span class="index__go" aria-hidden="true">Watch <i>&#8594;</i></span>
@@ -141,8 +181,10 @@
       <li class="index__row">
         <div class="index__inner" data-preview="plate" data-plate="Generative" data-tint="warm">
           <span class="index__no">03</span>
+          <figure class="index__thumb index__thumb--plate" data-tint="warm" aria-hidden="true"><span>Generative</span></figure>
           <div class="index__body">
             <h3 class="index__title"><a class="stretch" href="https://www.instagram.com/p/DdN9OC2Kr0C/" target="_blank" rel="noopener">Generative shorts</a></h3>
+            <p class="index__meta">Short&#8209;form · Instagram</p>
             <p class="index__desc">Short&#8209;form horror and narrative built in Google Flow. Hybrid pieces that composite generated figures into my own phone&#8209;shot night exteriors, plus a fully generated animated piece.</p>
             <p class="index__more">
               <a href="https://www.instagram.com/p/DdN9OC2Kr0C/" target="_blank" rel="noopener">Reel II, 2.5k views</a>
@@ -158,8 +200,10 @@
       <li class="index__row index__row--wip">
         <div class="index__inner" data-preview="plate" data-plate="Monkey&#8217;s Paw" data-tint="deep">
           <span class="index__no">04</span>
+          <figure class="index__thumb index__thumb--plate" data-tint="deep" aria-hidden="true"><span>In development</span></figure>
           <div class="index__body">
             <h3 class="index__title">The Monkey&#8217;s Paw</h3>
+            <p class="index__meta">In development</p>
             <p class="index__desc">A cinematic AI&#8209;generated retelling. A long&#8209;form test of whether character and tone can hold across a full sequence.</p>
           </div>
           <p class="index__role"><span>Writer</span><span>Director</span></p>
@@ -175,21 +219,35 @@
     <div class="feature__player">
       <div class="lite-yt" id="lite-yt" data-id="grgffM9v0jU" role="button" tabindex="0"
            aria-label="Play Ketchup, a horror-comedy short film, on YouTube">
-        <img src="/assets/img/ketchup-poster.jpg" width="1280" height="654"
-             alt="Poster for Ketchup, a horror-comedy short film." loading="lazy" decoding="async">
+        <img src="/assets/img/ketchup-player.jpg" width="1400" height="788"
+             alt="A masked figure stands in a doorway in a darkened flat, from Ketchup."
+             loading="lazy" decoding="async">
         <span class="lite-yt__scrim" aria-hidden="true"></span>
         <span class="lite-yt__play" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg>
           <b>Play</b>
         </span>
       </div>
+
+      <ul class="strip" aria-label="Frames from Ketchup">
+        <li><img src="/assets/img/ketchup-01.jpg" width="1000" height="562" loading="lazy" decoding="async"
+                 alt="A masked figure framed between two walls of hard diagonal light."></li>
+        <li><img src="/assets/img/ketchup-02.jpg" width="1000" height="562" loading="lazy" decoding="async"
+                 alt="Extreme close-up on the eyes above a pulled-up mask."></li>
+        <li><img src="/assets/img/ketchup-03.jpg" width="1000" height="562" loading="lazy" decoding="async"
+                 alt="Wide shot of a figure cooking at a stove in a narrow kitchen."></li>
+        <li><img src="/assets/img/ketchup-04.jpg" width="1000" height="562" loading="lazy" decoding="async"
+                 alt="The film breaks into red as blood washes across the frame."></li>
+      </ul>
     </div>
     <div class="feature__note">
       <h2>Ketchup</h2>
       <p>A horror&#8209;comedy short, made independently with no budget. I wrote it, shot it, lit it and cut it. Everything from the first draft to the delivered master was run singlehanded, which is the fastest way I have found to learn what each department actually does.</p>
       <dl class="spec">
+        <div><dt>Year</dt><dd>2026</dd></div>
+        <div><dt>Runtime</dt><dd>5 min</dd></div>
+        <div><dt>Format</dt><dd>Black and white, 1080p</dd></div>
         <div><dt>Role</dt><dd>Writer, Director, Cinematography, Editor</dd></div>
-        <div><dt>Format</dt><dd>Short film</dd></div>
         <div><dt>Post</dt><dd>Premiere Pro</dd></div>
       </dl>
     </div>
