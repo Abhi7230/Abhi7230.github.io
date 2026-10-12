@@ -50,3 +50,27 @@ directly, because the page uses absolute paths.
 Add a `CNAME` file containing just the domain, point the DNS at GitHub Pages,
 then update the absolute URLs in the `<head>` of `index.html`, `robots.txt` and
 `sitemap.xml`.
+
+## Analytics
+
+Cookieless, no consent banner. Not yet active.
+
+To turn on: sign up at <https://www.goatcounter.com>, then in `index.html`
+and `ads/index.html` uncomment the analytics line in `<head>` and replace
+`YOURCODE` with your site code. Event tracking in `assets/js/main.js`
+activates by itself and is a no-op until then.
+
+Events reported: `gate-01/02/03` (which door a visitor picks),
+`to-ads-page`, `to-films-page`, `contact-email`, `contact-phone`,
+`cv-download`, `film-*`, `instagram`.
+
+## Pitch links
+
+Outreach links should carry a campaign tag. These skip the welcome gate
+and land the reader straight on the page:
+
+```
+https://abhi7230.github.io/ads/?utm_source=pitch&utm_campaign=STUDIONAME
+```
+
+The gate bypass is client side and works with or without analytics.

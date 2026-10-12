@@ -157,6 +157,10 @@
       if (!opt) return;
       // Leaving for /ads/ still records the choice before navigation.
       try { window.localStorage.setItem(KEY, '1'); } catch (err) { /* ignore */ }
+      if (window.__track) {
+        var n = opt.querySelector('.gate__n');
+        window.__track('gate-' + (n ? n.textContent.trim() : 'choice'));
+      }
       if (opt.hasAttribute('data-stay')) {
         // An in-page anchor should still land on its section.
         var href = opt.getAttribute('href');
@@ -176,6 +180,39 @@
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     });
+  })();
+
+
+  /* ----------------------------------------------------------
+     4. Analytics events. Entirely a no-op until the GoatCounter
+        snippet is live, so this is safe to ship before the
+        account exists. Tracks intent, not people.
+     ---------------------------------------------------------- */
+  (function events() {
+    function hit(name) {
+      if (!window.goatcounter || !window.goatcounter.count) return;
+      try { window.goatcounter.count({ path: name, title: name, event: true }); } catch (e) { /* ignore */ }
+    }
+    // expose so other blocks can report without re-checking
+    window.__track = hit;
+
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest ? e.target.closest('a') : null;
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+
+      if (href.indexOf('mailto:') === 0) return hit('contact-email');
+      if (href.indexOf('tel:') === 0) return hit('contact-phone');
+      if (/abhi-raj-cv\.pdf/.test(href)) return hit('cv-download');
+      if (/youtube\.com|youtu\.be/.test(href)) {
+        var t = (a.textContent || '').trim().toLowerCase().replace(/\s+/g, '-').slice(0, 30);
+        return hit('film-' + (t || 'youtube'));
+      }
+      if (/instagram\.com/.test(href)) return hit('instagram');
+      if (/drive\.google\.com/.test(href)) return hit('film-ctrl-v-drive');
+      if (href === '/ads/' || href === '/ads') return hit('to-ads-page');
+      if (href === '/') return hit('to-films-page');
+    }, true);
   })();
 
   /* ----------------------------------------------------------
