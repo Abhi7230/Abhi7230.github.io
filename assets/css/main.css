@@ -608,6 +608,8 @@ section{ padding-inline:var(--gut); max-width:var(--max); margin-inline:auto; }
   margin-bottom:.95rem;
 }
 .card p{ color:var(--dim); font-size:.955rem; max-width:52ch; }
+.card p a{ color:var(--paper); text-decoration:none; border-bottom:1px solid var(--rule-2); padding-bottom:1px; transition:border-color .35s var(--ease); }
+.card p a:hover{ border-color:var(--red); }
 @media (max-width:820px){
   .now__grid{ grid-template-columns:1fr; }
 }
