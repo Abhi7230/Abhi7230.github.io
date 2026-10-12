@@ -53,12 +53,10 @@ then update the absolute URLs in the `<head>` of `index.html`, `robots.txt` and
 
 ## Analytics
 
-Cookieless, no consent banner. Not yet active.
-
-To turn on: sign up at <https://www.goatcounter.com>, then in `index.html`
-and `ads/index.html` uncomment the analytics line in `<head>` and replace
-`YOURCODE` with your site code. Event tracking in `assets/js/main.js`
-activates by itself and is a no-op until then.
+Cookieless, no consent banner. Live at
+<https://abhi7230.goatcounter.com>. The tag is in the `<head>` of
+`index.html` and `ads/index.html`; event tracking lives in
+`assets/js/main.js`.
 
 Events reported: `gate-01/02/03` (which door a visitor picks),
 `to-ads-page`, `to-films-page`, `contact-email`, `contact-phone`,
