@@ -107,6 +107,16 @@
   ]
 }
 </script>
+<script>
+(function(){
+  try{
+    if (localStorage.getItem('ar_gate_done') === '1') return;
+  }catch(e){ return; }                       // private mode: never gate
+  var q = location.search;
+  if (/[?&]utm_/.test(q) || location.hash) return;   // outreach deep links skip the gate
+  document.documentElement.className += ' gate-pending';
+})();
+</script>
 </head>
 <body>
 <div class="grain" aria-hidden="true"></div>
@@ -426,20 +436,35 @@
 </div>
 
 
-<aside class="chooser" id="chooser" hidden>
-  <p class="chooser__q">First time here?</p>
-  <div class="chooser__opts">
-    <a class="chooser__opt" href="/ads/">
-      <b>I make ads</b>
-      <span>Process, pipeline and breakdowns</span>
-    </a>
-    <button class="chooser__opt" type="button" data-dismiss>
-      <b>I want the films</b>
-      <span>Stay on this page</span>
-    </button>
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-q" hidden>
+  <div class="gate__inner">
+    <p class="gate__eyebrow">Abhi Raj</p>
+    <h2 class="gate__q" id="gate-q">What brings you here?</h2>
+    <ul class="gate__opts">
+      <li>
+        <a class="gate__opt" href="/ads/" data-choose>
+          <span class="gate__n">01</span>
+          <span class="gate__t"><b>Ads and brand work</b><i>Process, pipeline and breakdowns</i></span>
+          <span class="gate__arrow" aria-hidden="true">&#8594;</span>
+        </a>
+      </li>
+      <li>
+        <button class="gate__opt" type="button" data-stay>
+          <span class="gate__n">02</span>
+          <span class="gate__t"><b>Films and directing</b><i>Shorts, credits and the work</i></span>
+          <span class="gate__arrow" aria-hidden="true">&#8594;</span>
+        </button>
+      </li>
+      <li>
+        <a class="gate__opt" href="#engineering" data-stay>
+          <span class="gate__n">03</span>
+          <span class="gate__t"><b>Engineering</b><i>Backend, AI systems and tooling</i></span>
+          <span class="gate__arrow" aria-hidden="true">&#8594;</span>
+        </a>
+      </li>
+    </ul>
   </div>
-  <button class="chooser__x" type="button" data-dismiss aria-label="Dismiss">&#215;</button>
-</aside>
+</div>
 
 <script src="/assets/js/main.js" defer></script>
 </body>

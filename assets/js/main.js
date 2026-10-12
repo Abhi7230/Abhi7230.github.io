@@ -123,43 +123,58 @@
   })();
 
   /* ----------------------------------------------------------
-     2b. Audience chooser. Shown once, dismissible, and never
-         covering the work. Anyone arriving from a pitch email
-         lands on the right page already, so this only serves
-         people who typed the bare domain.
+     2b. Gate. Full screen, blocks the page until a choice is
+         made. The <head> guard already decided whether it
+         applies, so this only renders it and handles the choice.
      ---------------------------------------------------------- */
-  (function chooser() {
-    var el = document.getElementById('chooser');
+  (function gate() {
+    var root = document.documentElement;
+    var el = document.getElementById('gate');
     if (!el) return;
 
-    var KEY = 'ar_chooser_seen';
-    var seen = false;
-    try { seen = window.localStorage.getItem(KEY) === '1'; } catch (e) { seen = false; }
+    // The head guard is the single source of truth. No class, no gate.
+    if (root.className.indexOf('gate-pending') === -1) return;
 
-    // Deep links from outreach carry a campaign tag; never interrupt those.
-    if (seen || /[?&]utm_/.test(window.location.search) || window.location.hash) return;
+    var KEY = 'ar_gate_done';
+    var lastFocus = document.activeElement;
 
-    function dismiss() {
-      el.setAttribute('hidden', '');
+    el.removeAttribute('hidden');
+    root.classList.remove('gate-pending');
+    root.classList.add('gate-open');
+
+    var opts = el.querySelectorAll('.gate__opt');
+    if (opts.length) opts[0].focus();
+
+    function release() {
       try { window.localStorage.setItem(KEY, '1'); } catch (e) { /* private mode */ }
+      el.setAttribute('hidden', '');
+      root.classList.remove('gate-open');
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
     }
 
-    // Hold it back until the hero has been seen, so it never fights the first impression.
-    var t = window.setTimeout(function () {
-      el.removeAttribute('hidden');
-    }, 2600);
-
     el.addEventListener('click', function (e) {
-      var btn = e.target.closest ? e.target.closest('[data-dismiss]') : null;
-      if (btn) { window.clearTimeout(t); dismiss(); }
+      var opt = e.target.closest ? e.target.closest('.gate__opt') : null;
+      if (!opt) return;
+      // Leaving for /ads/ still records the choice before navigation.
+      try { window.localStorage.setItem(KEY, '1'); } catch (err) { /* ignore */ }
+      if (opt.hasAttribute('data-stay')) {
+        // An in-page anchor should still land on its section.
+        var href = opt.getAttribute('href');
+        release();
+        if (href && href.charAt(0) === '#') {
+          var t = document.querySelector(href);
+          if (t) t.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+        }
+        if (opt.tagName === 'A') e.preventDefault();
+      }
     });
-    // Choosing the studio page also counts as answered.
-    var studio = el.querySelector('a[href="/ads/"]');
-    if (studio) studio.addEventListener('click', function () {
-      try { window.localStorage.setItem(KEY, '1'); } catch (e) { /* ignore */ }
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && !el.hasAttribute('hidden')) { window.clearTimeout(t); dismiss(); }
+
+    // Keep tab focus inside the gate while it is open.
+    el.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab' || opts.length === 0) return;
+      var first = opts[0], last = opts[opts.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     });
   })();
 
