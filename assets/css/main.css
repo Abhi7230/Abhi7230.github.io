@@ -1,3 +1,12 @@
+/* Self-hosted fonts. Removes two render-blocking third-party stylesheets and
+   survives corporate networks that block font CDNs, which agencies often do.
+   Satoshi: ITF Free Font License. JetBrains Mono: SIL OFL 1.1. */
+@font-face{font-family:'Satoshi';src:url('/assets/fonts/satoshi-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Satoshi';src:url('/assets/fonts/satoshi-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Satoshi';src:url('/assets/fonts/satoshi-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Satoshi';src:url('/assets/fonts/satoshi-900.woff2') format('woff2');font-weight:900;font-style:normal;font-display:swap}
+@font-face{font-family:'JetBrains Mono';src:url('/assets/fonts/jetbrainsmono-latin.woff2') format('woff2');font-weight:100 800;font-style:normal;font-display:swap}
+
 /* ============================================================
    Abhi Raj — filmmaker
    Concept spine: the site reads like a working production folder.
