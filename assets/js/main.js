@@ -123,6 +123,47 @@
   })();
 
   /* ----------------------------------------------------------
+     2b. Audience chooser. Shown once, dismissible, and never
+         covering the work. Anyone arriving from a pitch email
+         lands on the right page already, so this only serves
+         people who typed the bare domain.
+     ---------------------------------------------------------- */
+  (function chooser() {
+    var el = document.getElementById('chooser');
+    if (!el) return;
+
+    var KEY = 'ar_chooser_seen';
+    var seen = false;
+    try { seen = window.localStorage.getItem(KEY) === '1'; } catch (e) { seen = false; }
+
+    // Deep links from outreach carry a campaign tag; never interrupt those.
+    if (seen || /[?&]utm_/.test(window.location.search) || window.location.hash) return;
+
+    function dismiss() {
+      el.setAttribute('hidden', '');
+      try { window.localStorage.setItem(KEY, '1'); } catch (e) { /* private mode */ }
+    }
+
+    // Hold it back until the hero has been seen, so it never fights the first impression.
+    var t = window.setTimeout(function () {
+      el.removeAttribute('hidden');
+    }, 2600);
+
+    el.addEventListener('click', function (e) {
+      var btn = e.target.closest ? e.target.closest('[data-dismiss]') : null;
+      if (btn) { window.clearTimeout(t); dismiss(); }
+    });
+    // Choosing the studio page also counts as answered.
+    var studio = el.querySelector('a[href="/ads/"]');
+    if (studio) studio.addEventListener('click', function () {
+      try { window.localStorage.setItem(KEY, '1'); } catch (e) { /* ignore */ }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !el.hasAttribute('hidden')) { window.clearTimeout(t); dismiss(); }
+    });
+  })();
+
+  /* ----------------------------------------------------------
      3. Scroll reveals — transform only, applied by JS so the
         page is fully readable when JS is off or fails.
      ---------------------------------------------------------- */

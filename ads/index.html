@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Abhi Raj · AI-generated film, and how it is made</title>
+<meta name="description" content="A 44-shot generated animated short, four characters held across all of it, and the pipeline that produced it. Abhi Raj, writer-director and engineer.">
+<link rel="canonical" href="https://abhi7230.github.io/ads/">
+<meta name="author" content="Abhi Raj">
+<meta name="theme-color" content="#0a0a0b">
+
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Abhi Raj">
+<meta property="og:title" content="Abhi Raj · AI-generated film, and how it is made">
+<meta property="og:description" content="44 shots. Four characters held across all of them. 51 stills thrown away to keep 44. The pipeline, not just the output.">
+<meta property="og:url" content="https://abhi7230.github.io/ads/">
+<meta property="og:image" content="https://abhi7230.github.io/assets/img/dhaga-01.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Abhi Raj · AI-generated film, and how it is made">
+<meta name="twitter:image" content="https://abhi7230.github.io/assets/img/dhaga-01.jpg">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" as="image" href="/assets/img/dhaga-01.jpg">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/satoshi-900.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/satoshi-400.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/jetbrainsmono-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/process.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<a class="skip" href="#pipeline">Skip to the pipeline</a>
+
+<header class="nav">
+  <a class="nav__brand" href="/">
+    <span class="nav__name">Abhi Raj</span>
+    <span class="nav__role">Writer · Director · Software engineer</span>
+  </a>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#film">The film</a>
+    <a href="#pipeline">Pipeline</a>
+    <a href="#consistency">Consistency</a>
+    <a href="/">Films</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ─────────────  HERO  ───────────── -->
+  <section class="phero">
+    <div class="phero__text">
+      <h1 class="phero__head">Most AI films fall apart by the second cut.<br><span>This one holds for forty-four.</span></h1>
+      <p class="phero__sub">I write, board, generate and cut my own work, and I build the tooling that runs it. Below is one finished film and the exact process behind it, including what got thrown away.</p>
+      <div class="phero__cta">
+        <a class="cta-watch" href="#film">
+          <span class="cta-watch__rule" aria-hidden="true"></span>
+          <span class="cta-watch__label">Watch the film</span>
+        </a>
+        <a class="cta-quiet" href="#pipeline">
+          See the pipeline
+          <span class="cta-quiet__rule" aria-hidden="true"></span>
+        </a>
+      </div>
+    </div>
+    <figure class="phero__plate">
+      <img src="/assets/img/dhaga-01.jpg" width="1000" height="562"
+           alt="An animated grandmother in warm light, from Dhaga." fetchpriority="high" decoding="async">
+      <figcaption>Dhaga · generated in Google Flow · 2026</figcaption>
+    </figure>
+  </section>
+
+  <!-- ─────────────  NUMBERS  ───────────── -->
+  <section class="stats" aria-label="Production figures">
+    <dl>
+      <div><dt>44</dt><dd>shots in the finished cut</dd></div>
+      <div><dt>4</dt><dd>characters held across all of them</dd></div>
+      <div><dt>51</dt><dd>stills discarded to keep 44</dd></div>
+      <div><dt>22</dt><dd>batch jobs, through 9 tools I wrote</dd></div>
+    </dl>
+  </section>
+
+  <!-- ─────────────  THE FILM  ───────────── -->
+  <section id="film" class="pfilm">
+    <h2 class="label">The film</h2>
+    <div class="pfilm__grid">
+      <div class="lite-yt" id="lite-yt" data-id="wSa9bddf1cw" role="button" tabindex="0"
+           aria-label="Play Dhaga, an animated short, on YouTube">
+        <img src="/assets/img/dhaga-02.jpg" width="1000" height="562"
+             alt="Hands tying a red thread on a wrist, from Dhaga." loading="lazy" decoding="async">
+        <span class="lite-yt__scrim" aria-hidden="true"></span>
+        <span class="lite-yt__play" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg>
+          <b>Play</b>
+        </span>
+      </div>
+      <div class="pfilm__note">
+        <h3>Dhaga</h3>
+        <p>A grandmother ties a thread on her grandson&#8217;s wrist, and the thread outlives her. Two minutes, no dialogue, generated end to end.</p>
+        <dl class="spec">
+          <div><dt>Runtime</dt><dd>2 min 06</dd></div>
+          <div><dt>Shots</dt><dd>44</dd></div>
+          <div><dt>Built in</dt><dd>Google Flow</dd></div>
+          <div><dt>Role</dt><dd>Writer, Director, Animation, Edit</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────  PIPELINE  ───────────── -->
+  <section id="pipeline" class="pipe">
+    <h2 class="label">How a brief becomes a film</h2>
+    <p class="pipe__lede">This is the actual order I work in. The expensive steps sit at the end on purpose, so a bad idea dies while it is still cheap.</p>
+
+    <ol class="flow">
+      <li class="flow__step">
+        <span class="flow__n">01</span>
+        <h3>Script and shot list</h3>
+        <p>The film is broken into numbered shots with durations before a single frame is generated. Dhaga was 44 entries in a shot list before it was anything else.</p>
+        <span class="flow__out">shots.json · 44 entries</span>
+      </li>
+      <li class="flow__step">
+        <span class="flow__n">02</span>
+        <h3>Character sheets</h3>
+        <p>Every recurring character gets a turnaround (front, side, back, close) locked before production. This is the step most AI work skips, and it is why most AI work drifts.</p>
+        <span class="flow__out">4 characters, locked</span>
+      </li>
+      <li class="flow__step">
+        <span class="flow__n">03</span>
+        <h3>Canary the cheapest shot</h3>
+        <p>One hard shot gets generated first, at the lowest setting that still shows whether the look survives. If the canary fails, the prompt architecture is wrong and nothing expensive has been spent yet.</p>
+        <span class="flow__out">1 test clip</span>
+      </li>
+      <li class="flow__step">
+        <span class="flow__n">04</span>
+        <h3>Batch generation</h3>
+        <p>Shots go out in batches rather than one at a time, through scripts I wrote against the tool, with resume and retry so a dropped job does not cost a whole run.</p>
+        <span class="flow__out">22 batches · 9 tools</span>
+      </li>
+      <li class="flow__step">
+        <span class="flow__n">05</span>
+        <h3>Cull hard</h3>
+        <p>Anything with a morphed face, a broken hand or a continuity break is killed rather than patched. On Dhaga, more frames were thrown away than kept.</p>
+        <span class="flow__out">51 stills and 12 clips rejected</span>
+      </li>
+      <li class="flow__step">
+        <span class="flow__n">06</span>
+        <h3>Repaint and assemble</h3>
+        <p>Survivors get targeted fixes, then the cut, sound and grade. The film is edited like a film, not assembled like a slideshow.</p>
+        <span class="flow__out">final master</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ─────────────  CONSISTENCY  ───────────── -->
+  <section id="consistency" class="cons">
+    <h2 class="label">Consistency</h2>
+    <h3 class="cons__head">Four characters, forty-four shots, one face each.</h3>
+    <p class="cons__lede">These are the reference sheets Dhaga was built against. Every shot was generated back to these, which is why the grandmother in shot 41 is the same person as in shot 2.</p>
+    <div class="chars">
+      <figure><img src="/assets/img/process/char-dadi_master.jpg" width="900" height="225" loading="lazy" decoding="async" alt="Turnaround sheet for the grandmother: front, side, back and close-up."><figcaption>Dadi</figcaption></figure>
+      <figure><img src="/assets/img/process/char-abhi10.jpg" width="900" height="225" loading="lazy" decoding="async" alt="Turnaround sheet for the boy: front, side, back and close-up."><figcaption>The boy</figcaption></figure>
+      <figure><img src="/assets/img/process/char-mummy.jpg" width="900" height="225" loading="lazy" decoding="async" alt="Turnaround sheet for the mother: front, side, back and close-up."><figcaption>Mother</figcaption></figure>
+      <figure><img src="/assets/img/process/char-kanha5.jpg" width="900" height="225" loading="lazy" decoding="async" alt="Turnaround sheet for the Kanha costume look."><figcaption>Kanha</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- ─────────────  WHAT GOT KILLED  ───────────── -->
+  <section class="cull">
+    <h2 class="label">What got killed</h2>
+    <h3 class="cull__head">The rejects are the part worth showing.</h3>
+    <p class="cull__lede">Anyone can post the good frame. These are real takes from Dhaga that did not make it, kept in the project under the name of the thing that went wrong.</p>
+
+    <div class="pairs">
+      <figure class="pair">
+        <div class="pair__imgs">
+          <span><img src="/assets/img/process/f01-kept.jpg" width="900" height="506" loading="lazy" decoding="async" alt="The kept take: grandmother holding a newborn, clean frame."><b>Kept</b></span>
+          <span><img src="/assets/img/process/f01-rejected.jpg" width="900" height="506" loading="lazy" decoding="async" alt="The rejected take: a stray extra hand enters at the right edge."><b class="is-bad">Rejected</b></span>
+        </div>
+        <figcaption>Same shot. The reject grows an extra hand at the right edge.</figcaption>
+      </figure>
+
+      <figure class="pair">
+        <div class="pair__imgs">
+          <span><img src="/assets/img/process/f04-kept.jpg" width="900" height="506" loading="lazy" decoding="async" alt="The kept take: the red thread is correct on the wrist."><b>Kept</b></span>
+          <span><img src="/assets/img/process/f04-rejected.jpg" width="900" height="506" loading="lazy" decoding="async" alt="The rejected take: the thread has turned into a plain band."><b class="is-bad">Rejected</b></span>
+        </div>
+        <figcaption>The thread is the title of the film. In the reject it became a plain band, so it was killed.</figcaption>
+      </figure>
+    </div>
+
+    <ul class="modes">
+      <li><code>c12_morphed_woman</code><span>Face drifted mid-clip. Unfixable, regenerated.</span></li>
+      <li><code>c21_v2_lighthands</code><span>Hands lit wrong and malformed. Killed.</span></li>
+      <li><code>f04_r1 / r2 / r3</code><span>Three attempts on one shot before one held.</span></li>
+    </ul>
+  </section>
+
+  <!-- ─────────────  WHAT THIS MEANS FOR YOU  ───────────── -->
+  <section class="offer">
+    <h2 class="label">What that means on a brief</h2>
+    <dl class="rows">
+      <div class="rows__row">
+        <dt>Range</dt>
+        <dd>Live&#8209;action and generated, and the hybrid in between. I shoot plates and composite generated elements into them, so a spot is not forced to be entirely one or the other.</dd>
+      </div>
+      <div class="rows__row">
+        <dt>Cost control</dt>
+        <dd>I canary the cheapest version of the hardest shot before committing budget, and I batch the rest. The expensive generation happens once, at the end, against a locked look.</dd>
+      </div>
+      <div class="rows__row">
+        <dt>Tooling</dt>
+        <dd>I am a backend engineer by day. When the tool does not do what a production needs, I write the thing that does: batching, resume, retry, frame fetching, automated fixes.</dd>
+      </div>
+      <div class="rows__row">
+        <dt>Direction</dt>
+        <dd>The films on the <a href="/">other half of this site</a> are live&#8209;action, written and directed. Generation here is a camera, not the point.</dd>
+      </div>
+    </dl>
+  </section>
+
+  <!-- ─────────────  CONTACT  ───────────── -->
+  <section id="contact" class="contact">
+    <h2 class="label">Contact</h2>
+    <h3 class="contact__head">Making an ad, a branded film, or an AI piece?</h3>
+    <p class="contact__sub">Based in Delhi NCR, working remote and in Mumbai. Happy to take a brief and come back with boards.</p>
+    <div class="direct">
+      <a class="mailto" href="mailto:abhir0609@gmail.com">
+        <span>abhir0609@gmail.com</span>
+        <span class="mailto__rule" aria-hidden="true"></span>
+      </a>
+    </div>
+    <ul class="elsewhere">
+      <li><a href="/">Film work</a></li>
+      <li><a href="https://www.youtube.com/watch?v=wSa9bddf1cw" target="_blank" rel="noopener">YouTube</a></li>
+      <li><a href="https://www.linkedin.com/in/abhi-raj-a626a8228/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="/assets/abhi-raj-cv.pdf" download="Abhi-Raj-CV.pdf">CV (PDF)</a></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <p>Abhi Raj</p>
+  <p>Noida, India</p>
+</footer>
+
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>
