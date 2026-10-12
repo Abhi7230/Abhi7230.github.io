@@ -201,6 +201,7 @@
       if (!a) return;
       var href = a.getAttribute('href') || '';
 
+      if (a.hasAttribute('data-book')) return hit('book-call');
       if (href.indexOf('mailto:') === 0) return hit('contact-email');
       if (href.indexOf('tel:') === 0) return hit('contact-phone');
       if (/abhi-raj-cv\.pdf/.test(href)) return hit('cv-download');
